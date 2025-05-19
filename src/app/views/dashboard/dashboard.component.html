@@ -1,0 +1,73 @@
+<div class="container">
+  <section class="text-center">
+    <article class="d-flex flex-column">
+      <h2 class="title-value">Total em contribuições</h2>
+      <span>{{ obj.valor1 + obj.valor2 | currency:'BRL' }}</span>
+    </article>
+
+    <div class="d-flex justify-content-center flex-column align-items-center">
+      <p>Gráfico de contribuições</p>
+      <app-donut-chart [value1]="obj.valor1" [value2]="obj.valor2"></app-donut-chart>
+    </div>
+
+    <article class="d-flex align-items-center justify-content-center">
+      <div class="d-flex flex-column">
+        <div class="d-flex align-items-center">
+          <div class="circle circle-pink"></div>
+          <h2 class="title-value">Contribuição mensal</h2>
+        </div>
+        <span class="value-min">{{ obj.valor1 | currency:'BRL' }}</span>
+      </div>
+    </article>
+
+    <article class="d-flex align-items-center justify-content-center">
+      <div class="d-flex flex-column">
+        <div class="d-flex align-items-center">
+          <div class="circle circle-purple"></div>
+          <h2 class="title-value">Contribuição voluntária</h2>
+        </div>
+        <span class="value-min">{{ obj.valor2 | currency:'BRL' }}</span>
+      </div>
+    </article>
+  </section>
+
+  <hr>
+
+  <section>
+    <div *ngFor="let contribuicao of contribuicoes">
+      <div class="contribuicao-card mt-3">
+        <header class="title-contribuicao d-flex justify-content-between">
+          <div class="d-flex align-items-center">
+            <img class="img-fluid contribuicao-icon" src="assets/img/icons/contribuicao.png" alt="logo contribuição">
+            <h5 class="my-0 px-1">{{ contribuicao.tipo }}</h5>
+          </div>
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </header>
+        <hr>
+        <div class="contribuicao-content">
+          <div class="d-flex justify-content-between row">
+            <div class="col">
+              <p>Valor da contribuição</p>
+            </div>
+            <div class="col text-end">
+              <p><b>{{ contribuicao.valor }}</b></p>
+            </div>
+          </div>
+          <div *ngIf="contribuicao.exibirPorcentagem" class="d-flex justify-content-between row">
+            <div class="col">
+              <p>Porcentagem do salário</p>
+            </div>
+            <div class="col text-end">
+              <p><b>{{ contribuicao.porcentagem }}</b></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 d-flex justify-content-center">
+              <button class="button-action text-center">Alterar contribuição</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

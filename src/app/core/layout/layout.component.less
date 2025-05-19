@@ -1,0 +1,130 @@
+app-header {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.example-container {
+  display: flex;
+  height: calc(100vh - var(--header-height));
+  padding-top: var(--internal-header-height);
+}
+
+mat-sidenav {
+  width: var(--sidenav-width);
+  box-shadow: none;
+  border-right: none !important;
+  margin-top: 8vw;
+  padding-top: 30px;
+  position: fixed;
+  top: calc(var(--header-height) + var(--internal-header-height));
+  height: calc(100vh - 65px);
+  z-index: 15;
+}
+
+mat-sidenav-content {
+  margin-left: var(--sidenav-width);
+  flex: 1;
+  padding: var(--padding-default);
+  background-color: var(--color-background);
+}
+
+.menu-text {
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+mat-nav-list {
+  padding: 0;
+}
+
+mat-list-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  padding-right: 0 !important;
+  border-bottom: solid 0.5px var(--color-border);
+  color: var(--color-text);
+  transition: background-color 0.3s ease;
+  font-weight: 400;
+}
+
+mat-list-item:hover {
+  background-color: var(--color-background) !important;
+}
+
+mat-list-item:hover .menu-text,
+mat-list-item.active-link .menu-text {
+  color: var(--color-hover) !important;
+}
+
+mat-list-item:hover .menu-icon {
+  filter: var(--color-icon-hover);
+}
+
+mat-nav-list .mat-list-item:hover,
+mat-nav-list .mat-list-item.mat-list-item:hover {
+  background-color: transparent !important;
+}
+
+.menu-icon {
+  width: 17px;
+  height: 17px;
+  margin-right: 10px;
+  object-fit: contain;
+  transition: color 0.3s ease;
+}
+
+.menu-icon-right {
+  margin-left: auto;
+  transition: color 0.3s ease;
+  color: var(--color-text);
+  font-weight: 400;
+}
+
+mat-list-item:hover .menu-icon-right {
+  color: var(--color-hover);
+}
+
+.internal-header {
+  font-size: 15px;
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  height: var(--internal-header-height);
+  background-color: var(--color-background);
+  border-bottom: 1px solid #ccc;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  padding-left: var(--padding-default);
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+
+  mat-sidenav,
+  .internal-header {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    top: auto;
+    z-index: auto;
+  }
+
+  mat-sidenav {
+    display: none;
+  }
+
+  mat-sidenav-content {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .example-container {
+    padding-top: 0;
+    height: auto;
+  }
+}

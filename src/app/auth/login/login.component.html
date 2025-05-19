@@ -1,0 +1,36 @@
+<div class="container-fluid login-container">
+  <div class="row">
+    <div class="col-lg-4 d-flex justify-content-center align-items-center login-form">
+      <div class="form-container">
+        <div class="d-flex flex-column justify-content-center text-center">
+          <img class="img-fluid w-50 mx-auto" src="assets/img/Logo.png" alt="logo Navega">
+          <h2>Boas-vindas ao Portal! Para começar, qual seu email ou CPF?</h2>
+          <p>Precisamos desta confirmação para dar início ao seu acesso.</p>
+        </div>
+        <form (ngSubmit)="onSubmit()">
+          <div class="mb-2">
+            <label for="username" class="form-label">Email ou CPF</label>
+            <input type="text" id="username" name="username" [(ngModel)]="username" class="form-control" required />
+          </div>
+          <div class="mb-5">
+            <label for="password" class="form-label">Senha</label>
+            <input type="password" id="password" name="password" [(ngModel)]="password" class="form-control" required />
+          </div>
+          <div *ngIf="errorMessage" class="alert alert-danger text-center">{{ errorMessage }}</div>
+          <div class="d-flex flex-column align-items-center mt-2">
+            <button type="submit" class="btn btn-primary">Acessar</button>
+            <p class="mt-2">Esqueceu a senha? <span class="forgot-password" routerLink="/dashboard">Acesse aqui</span>
+            </p>
+            <small>versão 0.01</small>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-lg-8 d-none d-lg-flex justify-content-center align-items-center login-image">
+      <div class="d-flex justify-content-center">
+        <img class="img-fluid" src="assets/img/screens.png" alt="screens">
+      </div>
+    </div>
+  </div>
+</div>
